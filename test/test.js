@@ -27,3 +27,67 @@ test("index", function(t) {
   t.equals(p.index(1,1), 3)
   t.end()
 })
+
+test("get/set", function(t) {
+
+  var p = ArrayGrid(new Float32Array([1,2,3,4]), [2,2])
+
+  t.equal(p.get(0,1), 2)
+  t.equal(p.get(1,0), 3)
+  t.equal(p.get(1,1), 4)
+
+  p.set(0,1, 5)
+  p.set(1,0, 6)
+  p.set(1,1, 7)
+
+  t.equal(p.data[1], 5)
+  t.equal(p.data[2], 6)
+  t.equal(p.data[3], 7)
+
+  t.equal(p.get(0,1), 5)
+  t.equal(p.get(1,0), 6)
+  t.equal(p.get(1,1), 7)
+
+  t.end()
+})
+
+test("get/set Array", function(t) {
+
+  var p = ArrayGrid([1,2,3,4], [2,2])
+
+  t.equal(p.get(0,1), 2)
+  t.equal(p.get(1,0), 3)
+  t.equal(p.get(1,1), 4)
+
+  p.set(0,1, 'A')
+  p.set(1,0, 'B')
+  p.set(1,1, 'C')
+
+  t.equal(p.data[1], 'A')
+  t.equal(p.data[2], 'B')
+  t.equal(p.data[3], 'C')
+
+  t.equal(p.get(0,1), 'A')
+  t.equal(p.get(1,0), 'B')
+  t.equal(p.get(1,1), 'C')
+
+  t.end()
+})
+
+test("empty Array", function(t) {
+  var p = ArrayGrid([], [2,2])
+
+  p.set(0,1, 'A')
+  p.set(1,0, 'B')
+  p.set(1,1, 'C')
+
+  t.equal(p.data[1], 'A')
+  t.equal(p.data[2], 'B')
+  t.equal(p.data[3], 'C')
+
+  t.equal(p.get(0,1), 'A')
+  t.equal(p.get(1,0), 'B')
+  t.equal(p.get(1,1), 'C')
+
+  t.end()
+})
