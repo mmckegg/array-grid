@@ -32,3 +32,22 @@ ArrayGrid.prototype.index = function(x, y, value){
     return this.offset + (this.stride[0] * x) + (this.stride[1] * y)
   }
 }
+
+ArrayGrid.prototype.place = function(originX, originY, array){
+  for (var y=0;y<array.shape[1];y++){
+    for (var x=0;x<array.shape[0];x++){
+      this.set(originX + x, originY + y, array.get(x, y))
+    }
+  }
+}
+
+ArrayGrid.prototype.lookup = function(value){
+  var index = this.data.indexOf(value)
+  if (~index){
+    index = index - this.offset
+    return [
+      Math.floor(index / this.stride[0]) % this.shape[0],
+      Math.floor(index / this.stride[1]) % this.shape[1]
+    ]
+  }
+}

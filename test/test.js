@@ -17,6 +17,31 @@ test("ndarray", function(t) {
   t.end()
 })
 
+
+test("place and lookup", function(t) {
+
+  var grid = ArrayGrid([1,2,3,4], [4,4], [1,4])
+  grid.place(1, 2, ArrayGrid([5,6,7,8], [2,2], [1, 2]))
+
+  t.equals(grid.get(0,0), 1)
+  t.equals(grid.get(3,0), 4)
+
+  t.equals(grid.get(1,2), 5)
+  t.equals(grid.get(2,2), 6)
+  t.equals(grid.get(1,3), 7)
+  t.equals(grid.get(2,3), 8)
+
+  t.same(grid.lookup(2), [1,0])
+  t.same(grid.lookup(3), [2,0])
+
+
+  t.same(grid.lookup(5), [1,2])
+  t.same(grid.lookup(7), [1,3])
+  t.same(grid.lookup(8), [2,3])
+  
+  t.end()
+})
+
 test("index", function(t) {
 
   var p = ArrayGrid(new Float32Array([1,2,3,4]), [2,2])

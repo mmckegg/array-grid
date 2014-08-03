@@ -1,9 +1,9 @@
 array-grid
 ===
 
-Two-dimensional implementation of ndarray to avoid dynamic code generation eval.
+Two-dimensional implementation of ndarray with coordinate lookup and sub-array placement.
 
-This modules conforms to the same API as [ndarray](https://github.com/mikolalysenko/ndarray) except fixed at 2-dimensions. Use if you need to avoid the runtime eval code generation of ndarray (e.g. Chrome Packaged App).
+This modules conforms to the same API as [ndarray](https://github.com/mikolalysenko/ndarray) except fixed at 2-dimensions with a couple of other useful methods (`lookup` and `place`). Use if you need to avoid the runtime eval code generation of ndarray (e.g. Chrome Packaged App).
 
 ## Install via [npm](https://npmjs.org/packages/array-grid)
 
@@ -27,8 +27,30 @@ var array = ArrayGrid([1,2,3,4], [2, 2])
 
 Returns a 2-dimensional array view of the underlying data.
 
-### array.get(x, y)
+### `array.get(x, y)`
 
-### array.set(x, y, value)
+Get the value at the position specified.
 
-### array.index(x, y)
+### `array.set(x, y, value)`
+
+Set the value of the position specified.
+
+### `array.index(x, y)`
+
+Get the interal 1d `data` index of the specified coordinates.
+
+### `array.lookup(value)`
+
+Lookup the `[x,y]` coordinates of the specified `value`.
+
+### `array.place(originX, originY, array)`
+
+Stamp another ArrayGrid or two-dimensional ndarray starting at the origin specified.
+
+### `array.data` (attribute)
+
+The underlying one-dimensional array holding the data.
+
+### `array.shape` (attribute)
+
+`[width,height]` of the grid.
