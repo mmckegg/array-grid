@@ -13,13 +13,22 @@ function ArrayGrid(data, shape, stride, offset){
 }
 
 ArrayGrid.prototype.get = function(x, y){
-  return this.data[(this.stride[0] * x) + (this.stride[1] * y)]
+  if (x < this.shape[0] && y < this.shape[1]){
+    return this.data[this.offset + (this.stride[0] * x) + (this.stride[1] * y)]
+  }
 }
 
 ArrayGrid.prototype.set = function(x, y, value){
-  this.data[(this.stride[0] * x) + (this.stride[1] * y)] = value
+  if (x < this.shape[0] && y < this.shape[1]){
+    this.data[this.offset + (this.stride[0] * x) + (this.stride[1] * y)] = value
+    return true
+  } else {
+    return false
+  }
 }
 
 ArrayGrid.prototype.index = function(x, y, value){
-  return (this.stride[0] * x) + (this.stride[1] * y)
+  if (x < this.shape[0] && y < this.shape[1]){
+    return this.offset + (this.stride[0] * x) + (this.stride[1] * y)
+  }
 }
