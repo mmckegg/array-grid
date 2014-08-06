@@ -42,6 +42,18 @@ test("place and lookup", function(t) {
   t.end()
 })
 
+test("place negative stride", function(t) {
+  var grid = ArrayGrid([], [4,4], [1,4])
+  var inner = ArrayGrid([5,6,7,8], [2,2], [1, -2])
+  grid.place(1, 2, inner)
+
+  t.equals(grid.get(1,3), 5)
+  t.equals(grid.get(2,3), 6)
+  t.equals(grid.get(1,2), 7)
+  t.equals(grid.get(2,2), 8)
+  t.end()
+})
+
 test("index", function(t) {
 
   var p = ArrayGrid(new Float32Array([1,2,3,4]), [2,2])
@@ -72,6 +84,48 @@ test("get/set", function(t) {
   t.equal(p.get(0,1), 5)
   t.equal(p.get(1,0), 6)
   t.equal(p.get(1,1), 7)
+
+  t.end()
+})
+
+test("get/set - negative stride", function(t) {
+
+  var p = ArrayGrid([1,2,3,4,5,6], [2,3], [1, -2])
+  // 5 6
+  // 3 4
+  // 1 2
+
+  t.equal(p.get(0,1), 3)
+  t.equal(p.get(1,0), 6)
+  t.equal(p.get(1,1), 4)
+
+  p.set(0,1, 7)
+  p.set(1,0, 8)
+  p.set(1,1, 9)
+
+  t.equal(p.data[2], 7)
+  t.equal(p.data[5], 8)
+  t.equal(p.data[3], 9)
+
+  t.equal(p.get(0,1), 7)
+  t.equal(p.get(1,0), 8)
+  t.equal(p.get(1,1), 9)
+
+  var r = ArrayGrid([1,2,3,4,5,6], [3,2], [-1, -3])
+  // 6 5 4
+  // 3 2 1
+  t.equal(r.get(0,1), 3)
+  t.equal(r.get(1,0), 5)
+  t.equal(r.get(1,1), 2)
+
+  var r = ArrayGrid([1,2,3,4,5,6], [2,3], [-1, -2])
+  // 6 5
+  // 4 3
+  // 2 1
+  t.equal(r.get(0,1), 4)
+  t.equal(r.get(1,0), 5)
+  t.equal(r.get(1,1), 3)
+
 
   t.end()
 })
