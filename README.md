@@ -22,28 +22,28 @@ var array = ArrayGrid([1,2,3,4], [2, 2])
 
 - `data` is a 1D array storage. It is either an instance of Array, a typed array, or an object that implements get(), set(), .length
 - `shape` is the shape of the view (Default: `[data.length, 1]`)
-- `stride` is the resulting stride of the new array. (Default: row major)
+- `stride` is the resulting stride of the new array. (Default: row major `[shape[1], 1]`)
 - `offset` is the offset to start the view (Default: 0)
 
 Returns a 2-dimensional array view of the underlying data.
 
-### `array.get(x, y)`
+### `array.get(row, col)`
 
 Get the value at the position specified.
 
-### `array.set(x, y, value)`
+### `array.set(row, col, value)`
 
 Set the value of the position specified.
 
-### `array.index(x, y)`
+### `array.index(row, col)`
 
 Get the interal 1d `data` index of the specified coordinates.
 
 ### `array.lookup(value)`
 
-Lookup the `[x,y]` coordinates of the specified `value`.
+Lookup the `[row,col]` coordinates of the specified `value`.
 
-### `array.place(originX, originY, array)`
+### `array.place(originRow, originCol, array)`
 
 Stamp another ArrayGrid or two-dimensional ndarray starting at the origin specified.
 
@@ -53,4 +53,4 @@ The underlying one-dimensional array holding the data.
 
 ### `array.shape` (attribute)
 
-`[width,height]` of the grid.
+`[rows,columns]` of the grid.

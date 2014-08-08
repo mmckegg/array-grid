@@ -12,34 +12,34 @@ function ArrayGrid(data, shape, stride, offset){
   this.offset = offset || 0
 }
 
-ArrayGrid.prototype.get = function(x, y){
-  if (x < this.shape[0] && y < this.shape[1]){
-    return this.data[this.index(x,y)]
+ArrayGrid.prototype.get = function(row, col){
+  if (row < this.shape[0] && col < this.shape[1]){
+    return this.data[this.index(row,col)]
   }
 }
 
-ArrayGrid.prototype.set = function(x, y, value){
-  if (x < this.shape[0] && y < this.shape[1]){
-    this.data[this.index(x, y)] = value
+ArrayGrid.prototype.set = function(row, col, value){
+  if (row < this.shape[0] && col < this.shape[1]){
+    this.data[this.index(row, col)] = value
     return true
   } else {
     return false
   }
 }
 
-ArrayGrid.prototype.index = function(x, y){
-  if (x < this.shape[0] && y < this.shape[1]){
+ArrayGrid.prototype.index = function(row, col){
+  if (row < this.shape[0] && col < this.shape[1]){
     // handle negative stride
-    x = this.stride[0] < 0 ? -this.shape[0] + x + 1 : x
-    y = this.stride[1] < 0 ? -this.shape[1] + y + 1 : y
-    return this.offset + (this.stride[0] * x) + (this.stride[1] * y)
+    row = this.stride[0] < 0 ? -this.shape[0] + row + 1 : row
+    col = this.stride[1] < 0 ? -this.shape[1] + col + 1 : col
+    return this.offset + (this.stride[0] * row) + (this.stride[1] * col)
   }
 }
 
-ArrayGrid.prototype.place = function(originX, originY, array){
-  for (var y=0;y<array.shape[1];y++){
-    for (var x=0;x<array.shape[0];x++){
-      this.set(originX + x, originY + y, array.get(x, y))
+ArrayGrid.prototype.place = function(originRow, originCol, array){
+  for (var c=0;c<array.shape[1];c++){
+    for (var r=0;r<array.shape[0];r++){
+      this.set(originRow + r, originCol + c, array.get(r, c))
     }
   }
 }
