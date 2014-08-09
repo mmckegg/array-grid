@@ -43,6 +43,10 @@ Get the interal 1d `data` index of the specified coordinates.
 
 Lookup the `[row,col]` coordinates of the specified `value`.
 
+### `array.coordsAt(index)`
+
+Lookup the `[row,col]` coordinates of the specified `index`.
+
 ### `array.place(originRow, originCol, array)`
 
 Stamp another ArrayGrid or two-dimensional ndarray starting at the origin specified.

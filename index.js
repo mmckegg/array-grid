@@ -47,10 +47,14 @@ ArrayGrid.prototype.place = function(originRow, originCol, array){
 ArrayGrid.prototype.lookup = function(value){
   var index = this.data.indexOf(value)
   if (~index){
-    index = index - this.offset
-    return [
-      Math.floor(index / this.stride[0]) % this.shape[0],
-      Math.floor(index / this.stride[1]) % this.shape[1]
-    ]
+    return this.coordsAt(index)
   }
+}
+
+ArrayGrid.prototype.coordsAt = function(index){
+  index = index - this.offset
+  return [
+    Math.floor(index / this.stride[0]) % this.shape[0],
+    Math.floor(index / this.stride[1]) % this.shape[1]
+  ]
 }
