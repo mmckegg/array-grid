@@ -20,7 +20,7 @@ var array = ArrayGrid([1,2,3,4], [2, 2])
 
 ### `ArrayGrid(data[, shape, stride, offset])`
 
-- `data` is a 1D array storage. It is either an instance of Array, a typed array, or an object that implements get(), set(), .length
+- `data` is a 1D array storage. It is either an instance of Array or a typed array.
 - `shape` is the shape of the view (Default: `[data.length, 1]`)
 - `stride` is the resulting stride of the new array. (Default: row major `[shape[1], 1]`)
 - `offset` is the offset to start the view (Default: 0)
