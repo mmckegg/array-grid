@@ -37,8 +37,8 @@ ArrayGrid.prototype.index = function(row, col){
 }
 
 ArrayGrid.prototype.place = function(originRow, originCol, array){
-  for (var c=0;c<array.shape[1];c++){
-    for (var r=0;r<array.shape[0];r++){
+  for (var r=0;r<array.shape[0];r++){
+    for (var c=0;c<array.shape[1];c++){
       this.set(originRow + r, originCol + c, array.get(r, c))
     }
   }
