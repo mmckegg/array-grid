@@ -5,7 +5,7 @@ Two-dimensional implementation of ndarray with coordinate lookup and sub-array p
 
 This modules conforms to the same API as [ndarray](https://github.com/mikolalysenko/ndarray) except fixed at 2-dimensions with a couple of other useful methods (`lookup` and `place`). Use if you need to avoid the runtime eval code generation of ndarray (e.g. Chrome Packaged App).
 
-## Install via [npm](https://npmjs.org/packages/array-grid)
+## Install via [npm](https://npmjs.org/package/array-grid)
 
 ```bash
 $ npm install array-grid
