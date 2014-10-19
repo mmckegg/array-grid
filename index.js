@@ -52,9 +52,12 @@ ArrayGrid.prototype.lookup = function(value){
 }
 
 ArrayGrid.prototype.coordsAt = function(index){
-  index = index - this.offset
-  return [
-    Math.floor(index / this.stride[0]) % this.shape[0],
-    Math.floor(index / this.stride[1]) % this.shape[1]
-  ]
+  var max = this.shape[0] * this.shape[1]
+  if (index >= 0 && index < max){
+    index = index - this.offset
+    return [
+      Math.floor(index / this.stride[0]) % this.shape[0],
+      Math.floor(index / this.stride[1]) % this.shape[1]
+    ]
+  }
 }
