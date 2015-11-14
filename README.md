@@ -51,6 +51,10 @@ Lookup the `[row,col]` coordinates of the specified `index`.
 
 Stamp another ArrayGrid or two-dimensional ndarray starting at the origin specified.
 
+### `array.getRange(shape, offsetCoords)`
+
+Copy the specified range starting at `offsetCoords` and return a new ArrayGrid.
+
 ### `array.data` (attribute)
 
 The underlying one-dimensional array holding the data.

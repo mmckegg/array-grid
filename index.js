@@ -1,7 +1,7 @@
 module.exports = ArrayGrid
 
 function ArrayGrid(data, shape, stride, offset){
-  
+
   if (!(this instanceof ArrayGrid)){
     return new ArrayGrid(data, shape, stride, offset)
   }
@@ -60,4 +60,15 @@ ArrayGrid.prototype.coordsAt = function(index){
       Math.floor(index / this.stride[1]) % this.shape[1]
     ]
   }
+}
+
+ArrayGrid.prototype.getRange = function (shape, offset) {
+  offset = offset || [0, 0]
+  var result = ArrayGrid([], shape)
+  for (var r = 0; r < shape[0]; r++) {
+    for (var c = 0; c < shape[1]; c++) {
+      result.set(r, c, this.get(r + offset[0], c + offset[1]))
+    }
+  }
+  return result
 }
