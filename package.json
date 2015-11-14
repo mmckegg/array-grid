@@ -1,6 +1,6 @@
 {
   "name": "array-grid",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Two-dimensional implementation of ndarray to avoid dynamic code generation eval.",
   "main": "index.js",
   "directories": {
